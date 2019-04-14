@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from '../src/components/Card/Card'
-import { Route, Switch, Redirect } from 'react-router-dom';
-import SignupPage from '../SignupPage/SignupPage';
-import LoginPage from '../LoginPage/LoginPage';
+import Card from '../../components/Card/Card'
+import DrawButton from '../../components/DrawButton/DrawButton'
+// import SignupPage from '../SignupPage/SignupPage';
+// import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.updateCard = this.updateCard.bind(this);
 
     this.state = {
-      cards: [
-        {},
-      ],
+      cards: [],
       currentCard: {}
     }
   }
@@ -46,9 +46,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card question={this.state.currentCard.question} 
-              answer={this.state.currentCard.answer}
-              />
+        <div className="cardRow">
+          <Card question={this.state.currentCard.question} 
+                answer={this.state.currentCard.answer}
+                />
+        </div>
+        <div className="buttonRow">
+          <DrawButton drawCard={this.updateCard}/>
+        </div>
       </div>
     );
   }
