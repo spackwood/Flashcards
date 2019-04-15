@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from '../../components/Card/Card'
-import DrawButton from '../../components/DrawButton/DrawButton'
+import { Container } from "reactstrap";
+import { Provider } from "./context/context";
 // import SignupPage from '../SignupPage/SignupPage';
 // import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+
+import Header from "./components/Header";
+import CardPile from "./components/CardPile";
 
 class App extends Component {
   constructor(props) {
@@ -13,25 +16,15 @@ class App extends Component {
     this.updateCard = this.updateCard.bind(this);
 
     this.state = {
-      cards: [],
-      currentCard: {}
     }
   }
 
   async compoundDidMount() {
     const user = userService.getUser();
-    const currentCards = this.state.cards;
     
     this.setState({ 
-      user,
-      cards: currentCards,
-      currentCard: this.getRandomCard(currentCards)
+      user
     });
-  }
-
-  getRandomCard(currentCards){
-    var card = currentCards[Math.floor(Math.random() * currentCards.length)];
-    return(card);
   }
 
   handleLogout = () => {
@@ -45,16 +38,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="cardRow">
-          <Card question={this.state.currentCard.question} 
-                answer={this.state.currentCard.answer}
-                />
-        </div>
-        <div className="buttonRow">
-          <DrawButton drawCard={this.updateCard}/>
-        </div>
-      </div>
+      <Provider>
+        <Container>
+          <Header />
+          <CardPile />
+        </Container>
+      </Provider>
     );
   }
 }
