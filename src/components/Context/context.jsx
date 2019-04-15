@@ -6,14 +6,16 @@ const Context = React.createContext();
 const reducer = (state, action) => {
     switch (action.type) {
         case "ADD_CARD":
-        return {
-            ...state,
-            cards: [action.payload, ...state.cards]
-        };
-        case "UPDATE_CARD":
             return {
                 ...state,
-                cards: state.cards.filter(card => card._id !== action.payload)
+                cards: [action.payload, ...state.cards]
+            };
+        case "UPDATE_CARD":
+            let cards = state.cards.filter(card => card._id !== action.payload.id)
+            return {
+                ...state,
+                cards: [action.payload, ...cards]
+
         }
         case "DELETE_CARD":
             return {
@@ -47,7 +49,6 @@ export class Provider extends Component {
 
     async componentDidMount() {
         const res = await axios.get("api/flashcard/all");
-        console.log(res.date);
         this.setState({ cards: res.data });
     }
 
