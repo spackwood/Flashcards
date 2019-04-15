@@ -45,5 +45,3 @@ export default function Card(props) {
         </Card>
     );
 }
-
-export default Card;

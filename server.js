@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
