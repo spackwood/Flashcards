@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardText, CardBody, CardTitle, Button } from "reactstrap";
-import './Card.css';
+import './CardItem.css';
 
-export default function Card(props) {
+export default function CardItem(props) {
     return (
         <Card className="card text-white mt-3">
             <CardBody>

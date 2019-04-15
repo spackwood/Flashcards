@@ -3,7 +3,7 @@ import './DrawButton.css';
 import { Consumer } from "../context/context";
 import { Row, Col, Button } from "reactstrap";
 import Form from "../components/Form";
-import Card from "../components/Card";
+import CardItem from "../components/CardItem";
 import axios from "axios";
 
 export default class CardPile extends Component{
@@ -58,7 +58,7 @@ export default class CardPile extends Component{
                                     .map(card => {
                                         return (
                                             <Col key={card._id}>
-                                                <Card
+                                                <CardItem
                                                     card={card}
                                                     deleteCard={this.deleteCard.bind(
                                                         this,
