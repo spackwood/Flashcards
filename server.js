@@ -1,15 +1,33 @@
 const express = require('express');
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const path = require("path");
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+
+const flashcard = require("./routes/api/flashcard");
 
 const app = express();
 
 require('dotenv').config();
 require('./config/database');
 
+
+
 app.use(logger('dev'));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use("/api/flashcard/", flashcard);
+
+// DB Configuration
+const db = require("./config/keys").mongoURI;
+
+// Mongo
+mongoose
+    .connect(db, { useNewUrlParser: true })
+    .then(() => console.log("MongoDB Connected..."))
+    .catch(err => console.log(err));
 
 // configure bth serve-favicon & static middlewares
 // to serve from the production 'build' folder
