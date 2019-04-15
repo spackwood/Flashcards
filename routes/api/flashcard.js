@@ -25,6 +25,13 @@ router.post("/add", (req, res) => {
             .then(card => res.json({ statue: true, card }))
             .catch(err => res.json({ statue: false, err }));
     });
+    
+    router.patch("/update/:id", (req, res) => {
+        console.log('update to ', req.body)
+        FlashCard.updateOne({ _id: req.params.id }, { $set: req.body })
+            .then(card => res.json(card ))
+            .catch(err => res.json(err));
+    });
 
     router.patch("/toggle/:id", (req, res) => {
         FlashCard.findById(req.params.id).then(card => {

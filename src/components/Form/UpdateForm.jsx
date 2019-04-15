@@ -8,13 +8,18 @@ import {
     ModalBody
 } from "reactstrap";
 
-export default class Form extends Component {
-    state = {
-        question : "",
-        answer : ""
-    };
+export default class UpdateForm extends Component {
+    constructor(props) {
+        super(props);
+        console.log(this.props);
+       this.state = {
+            question : props.modalQuestion,
+            answer : props.modalAnswer
+        };
+    }
 
     handleChange = event => {
+        console.log(JSON.stringify(this.props))
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -22,10 +27,11 @@ export default class Form extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addCard({
+         this.props.updateCard({
             question: this.state.question,
-            answer: this.state.answer
-        });
+            answer: this.state.answer,
+            id: this.props.cardId
+        })
         this.setState({
             question: "",
             answer: ""
@@ -34,13 +40,14 @@ export default class Form extends Component {
 
     render() {
         return (
-            <Modal isOpen={this.props.modal} toggle={this.props.toggleModal}>
+            <Modal isOpen={this.props.modal} answer={this.props.modalAnswer} question={this.props.modalQuestion} toggle={this.props.toggleUpdateModal}>
                 <ModalBody>
                     <Label>Question</Label>
                     <Input
                         type="textarea"
                         name="question"
                         onChange={this.handleChange}
+                        placeholder={this.props.modalQuestion}
                         value={this.state.question}
                     />
                     <Label>Answer</Label>
@@ -48,11 +55,12 @@ export default class Form extends Component {
                         type="textarea"
                         name="answer"
                         onChange={this.handleChange}
+                        placeholder={this.props.modalAnswer}
                         value={this.state.answer}
                     />
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="danger" onClick={this.props.toggleModal}>
+                    <Button color="danger" onClick={this.props.toggleUpdateModal}>
                      Cancel
                     </Button>
                     <Button color="info" onClick={this.handleSubmit}>

@@ -10,6 +10,11 @@ const reducer = (state, action) => {
             ...state,
             cards: [action.payload, ...state.cards]
         };
+        case "UPDATE_CARD":
+            return {
+                ...state,
+                cards: state.cards.filter(card => card._id !== action.payload)
+        }
         case "DELETE_CARD":
             return {
                 ...state,

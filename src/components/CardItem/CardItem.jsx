@@ -7,8 +7,13 @@ export default function CardItem(props) {
         <Card className="card text-white mt-3">
       <CardBody>
         <span
-          onClick={props.handleToggle}
-          className="trash float-right far fa-trash-alt "
+          onClick={props.deleteCard}
+          className="trash float-right far fa fa-trash-alt "
+        />
+
+        <span
+          onClick={() => props.toggleUpdateModal(props.card)}
+          className="trash float-right far fa fa-pen"
         />
         <CardTitle className="font-weight-bold">Question</CardTitle>
         <CardText>{props.card.question}</CardText>

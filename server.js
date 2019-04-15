@@ -19,15 +19,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use("/api/flashcard/", flashcard);
 
-// DB Configuration
-const db = require("./config/keys").mongoURI;
-
-// Mongo
-mongoose
-    .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("MongoDB Connected..."))
-    .catch(err => console.log(err));
-
 // configure bth serve-favicon & static middlewares
 // to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));

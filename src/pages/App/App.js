@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Container } from "reactstrap";
-import { Provider } from "./context/context";
+import { Provider } from "../../components/Context/context";
 // import SignupPage from '../SignupPage/SignupPage';
 // import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 
-import Header from "./components/Header";
-import CardPile from "./components/CardPile";
+import Header from "../../components/Header/Header";
+import CardPile from "../../components/CardPile/CardPile";
 
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.updateCard = this.updateCard.bind(this);
-
     this.state = {
     }
   }
