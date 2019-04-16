@@ -1,4 +1,4 @@
-# Flashcards
+![Imgur](https://i.imgur.com/zJc2Wec.png)
 
 ## Introduction
 
