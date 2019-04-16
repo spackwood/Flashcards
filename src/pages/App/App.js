@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() });
+    this.setState({ user: userService.getUser() })
   }
 
   render() {
@@ -39,7 +39,10 @@ class App extends Component {
         <Route exact path='/' render={() =>
           <Provider>
             <Container>
-              <Navbar />
+              <Navbar 
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
               <Header />
               <CardPile />
             </Container>
