@@ -19,7 +19,6 @@ class App extends Component {
 
   async compoundDidMount() {
     const user = userService.getUser();
-
     this.setState({
       user
     });
