@@ -1,20 +1,22 @@
-#Introduction
+# Flashcards
+
+## Introduction
 
 An app that allows you to create flash cards for you to study. 
 
-Technologies Used
+## Technologies Used
 
 Mongoose, Express, React, and Nodejs. 
 
-Getting Started 
+## Getting Started 
 
 Trello - https://trello.com/b/ppwYzFZZ/studycards
 Heroku - https://flashcardsonreact.herokuapp.com/
 
-Problems 
+## Problems 
 
 Not known yet. I'm sure I'll find some. 
 
-Future Enhancements
+## Future Enhancements
 
 Make it so that each user has their own cards. 
