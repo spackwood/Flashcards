@@ -6,7 +6,7 @@ An app that allows you to create flash cards for you to study.
 
 ## Technologies Used
 
-Mongoose, Express, React, and Nodejs. 
+Mongoose, Express, React, VS Code, Heroku, Chrome Dev Tools.
 
 ## Getting Started 
 
